@@ -1,6 +1,6 @@
 
-col_1 = set()
-col_2 = list()
+col_1: set = set()
+col_2: list = list()
 similarity_score = 0;
 
 with open('input.txt', 'r', encoding="utf-8") as input_file:

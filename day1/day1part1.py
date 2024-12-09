@@ -1,8 +1,8 @@
 import bisect
 
 
-col1 = list()
-col2 = list()
+col1: list = list()
+col2: list = list()
 sum_of_distances = 0
 
 # access the local file input.txt

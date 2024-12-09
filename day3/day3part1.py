@@ -2,19 +2,18 @@ import re
 
 # input is a corrupted memory of computer
 # goal of the program is to multiply some numbers 
-# in the form of mul(X,Y) where x ans y are 1-3 digits
+# in the form of mul(X,Y) where x and y are 1-3 digits
 # many characters are invalid and should be ignored
 # search for the good sequences then execute the multiplication then add them all up
 
 
-#rechecher les séquences exactes mul(x,y) où x et y sont composés de 1 à 3 chiffres
-pattern = re.compile('mul\([\d]{1,3},[\d]{1,3}\)')
-sequences = []
-sum = 0
-# data = "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"
+# rechecher les séquences exactes mul(x,y) où x et y sont composés de 1 à 3 chiffres
+pattern: re.Pattern = re.compile('mul\([\d]{1,3},[\d]{1,3}\)')
+sequences: list = []
+sum: int = 0
 
 
-def mul(a, b):
+def mul(a: int, b: int):
     return a*b
 
 
