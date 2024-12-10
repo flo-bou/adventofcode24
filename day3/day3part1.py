@@ -29,6 +29,6 @@ with open('./day3/input.txt', 'r', encoding="utf-8") as input_file:
 print(sequences)
 # reduce la liste en accumulant les résultats
 for seq in sequences:
-    sum += eval(seq) # safiser ?
+    sum += eval(seq) # à safiser ?
 
 print(sum) # 168539636

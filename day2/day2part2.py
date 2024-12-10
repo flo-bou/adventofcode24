@@ -60,4 +60,4 @@ with open('./day2/input.txt', 'r', encoding="utf-8") as input_file:
                 print("Report is not safe :", levels)
 
 
-print("Nombre de reports safes : ", str(safe_reports_nb))
+print("Nombre de reports safes : ", str(safe_reports_nb)) # 514
