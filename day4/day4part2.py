@@ -33,4 +33,4 @@ for line_index, line in enumerate(data):
             if detect_MAS(data, line_index, col_index):
                 detection_nb += 1
 
-print(detection_nb, "détections") # 1873
+print(detection_nb, "détections") # 1873 OK

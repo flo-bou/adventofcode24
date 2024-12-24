@@ -55,4 +55,4 @@ for update in correct_updates:
     middle_index = int(len(update)/2)
     final_sum += update[middle_index]
 
-print("La somme des membres centraux des updates corrects est", final_sum) # 5639
+print("La somme des membres centraux des updates corrects est", final_sum) # 5639 OK

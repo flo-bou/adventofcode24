@@ -163,4 +163,4 @@ for line_index, line in enumerate(initial_map):
             print("Le garde a bouclé avec la position d'obstruction", line_index, char_index)
             loop_position_nb += 1
 
-print("Nombre de position qui font loop le garde :", loop_position_nb) # 3842
+print("Nombre de position qui font loop le garde :", loop_position_nb) # 3842 FALSE !!

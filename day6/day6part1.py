@@ -147,4 +147,4 @@ while guard_position != []:
         continue
     
 
-print(len(positions_traveled), "cases différentes parcourues") # 4647
+print(len(positions_traveled), "cases différentes parcourues") # 4647 OK
