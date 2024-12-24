@@ -6,7 +6,7 @@ col2: list = list()
 sum_of_distances = 0
 
 # access the local file input.txt
-with open('input.txt', 'r', encoding="utf-8") as input_file:
+with open('./day1/input.txt', 'r', encoding="utf-8") as input_file:
     while True:
         line = input_file.readline()
         if len(line) < 3:
@@ -22,4 +22,4 @@ with open('input.txt', 'r', encoding="utf-8") as input_file:
 for i in range(len(col1)):
     sum_of_distances += abs(col1[i]-col2[i])
     
-print(sum_of_distances)
+print(sum_of_distances) # 2285373 OK

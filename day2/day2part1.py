@@ -40,7 +40,7 @@ with open('./day2/input.txt', 'r', encoding="utf-8") as input_file:
             print("Report is not safe :", levels)
 
 
-print("Nombre de reports safes : ", str(safe_reports_nb)) # 463
+print("Nombre de reports safes : ", str(safe_reports_nb)) # 463 OK
 
 # access the local input file
 # read the file line per line and for each:

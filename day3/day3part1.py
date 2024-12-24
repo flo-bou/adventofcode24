@@ -31,4 +31,4 @@ print(sequences)
 for seq in sequences:
     sum += eval(seq) # à safiser ?
 
-print(sum) # 168539636
+print(sum) # 168539636 OK

@@ -114,4 +114,4 @@ for line_nb, line in enumerate(data):
         if char == 'X':
             detection += detect_XMAS(data, line_nb, char_index)
 
-print(detection, "détections") # 2524
+print(detection, "détections") # 2524 OK
