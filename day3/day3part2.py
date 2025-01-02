@@ -59,4 +59,4 @@ for seq in mul_sequences:
     sum += eval(seq) # à safiser ?
 
 # le début avant le 1er do() ou dont() compte ?
-print(sum) # 95297817
+print(sum) # 95297817 ?
