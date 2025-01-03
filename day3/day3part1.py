@@ -9,8 +9,8 @@ import re
 
 # rechecher les séquences exactes mul(x,y) où x et y sont composés de 1 à 3 chiffres
 pattern: re.Pattern = re.compile('mul\([\d]{1,3},[\d]{1,3}\)')
-sequences: list = []
-sum: int = 0
+mul_sequences: list = []
+sum_of_instructions: int = 0
 
 
 def mul(a: int, b: int):
@@ -18,17 +18,17 @@ def mul(a: int, b: int):
 
 
 with open('./day3/input.txt', 'r', encoding="utf-8") as input_file:
-    while True:
+    while input_file:
         line = input_file.readline()
-        if len(line) == 0:
+        if line == "":
             break
         # mettre les sequences dans une liste
-        sequences.extend(re.findall(pattern, line))
+        mul_sequences.extend(re.findall(pattern, line))
 
+print(mul_sequences)
 
-print(sequences)
-# reduce la liste en accumulant les résultats
-for seq in sequences:
-    sum += eval(seq) # à safiser ?
+# accumulant les résultats
+for seq in mul_sequences:
+    sum_of_instructions += eval(seq) # à safiser ?
 
-print(sum) # 168539636 OK
+print(sum_of_instructions) # 168539636 OK
