@@ -17,6 +17,8 @@ Challenges completed :
 - day4part1 ✅ & day4part2 ✅
 - day5part1 ✅
 - day6part1 ✅
+- day7part1 ✅
+
 
 ## Tests
 

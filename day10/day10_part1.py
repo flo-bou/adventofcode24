@@ -1,4 +1,4 @@
-import utils
+import day10.day10_utils as day10_utils
 # puzzle input is a topographic map of the surrounding area
 # fill in the missing hiking trails
 # a hiking trail is any path that starts at height 0, ends at height 9, and always increases by a height of exactly 1 at each step (a good hiking trail is as long as possible)
@@ -24,9 +24,9 @@ for line_index, line in enumerate(topo_map):
         if(char == "0"):
             # lancer une détection
             starting_pos = (line_index, char_index)
-            hiking_trails = utils.get_hiking_trails(starting_pos, topo_map)
+            hiking_trails = day10_utils.get_hiking_trails(starting_pos, topo_map)
             print("Hiking trails pour la position", line_index, char_index, ": ", hiking_trails)
-            total_trailhead_score += utils.get_trailhead_score(hiking_trails)
+            total_trailhead_score += day10_utils.get_trailhead_score(hiking_trails)
 
 
 # lire les cases adjacentes et chercher les +1

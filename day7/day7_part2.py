@@ -1,21 +1,16 @@
-from day7utils import *
+from day7.day7_utils import *
 
-# operators has been stolen by young elephants !
-# need to determine which test values could possibly be produced by placing any combination of operators into the calibration equations (the input)
-# each line is an equation. You need to determine whether the number can be combined with operators (only one or several per equation ?) to get the value on the left side
-# operators are always evaluated left to rigth, ignoring mathematical precedence rules. numbers must not be rearranged
-# The operators are + and *
-# detect the correct equations (the one that can be resolved with operators)
-# then add all the results up
 
-# read the file 
-# for each line, process the calculation
-# test all the possibilities of operators agains the result
+# some elephants are holding a third type of operator !
+# the || operator is a concatenation operator. 12 || 345 would become 12345
+# determine which equations could possibly be true. What is their total calibration result?
+
 
 target: int
 operands: list
 mul: str = "add"
 add: str = "mul"
+cat: str = "cat"
 every_combinations: list[list] = get_every_combinations(mul, add, 12)
 sum_of_correct_equations: int = 0
 

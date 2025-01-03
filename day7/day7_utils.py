@@ -41,6 +41,26 @@ def get_every_combinations(val1: str, val2: str, length: int) -> list[list]:
     return combos
 
 
+def get_every_combinations(vals: list[str], length: int) -> list[list]:
+    """Génère toutes les combinaisons avec les valeurs val1 et val2 de longueur length.
+    Par exemple get_every_combinations(["A", "B"], 2) renvoie [("A","A"),("A","B"),("B","A"),("B","B")]
+
+    Args:
+        vals (list[str]): Liste des valeurs possible dans la combinaison
+        length (int): Longueur/nombre de valeurs possibles
+
+    Returns:
+        list[list]: La liste de toutes les combinaisons de longueur length
+    """
+    combos: list[list] = list()
+    combos.append([*vals])
+    combos.append([vals])
+    combos.append([(val1,), (val2,)])
+    for nb in range(2, length):
+        combos.append(get_longer_combo(val1, val2, combos[nb-1]))
+    return combos
+
+
 def calculate_operation(val1: int, val2: int, operation: str) -> int:
     """Calcule l'opération avec les valeurs val1 et val2
 
