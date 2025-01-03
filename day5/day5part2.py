@@ -38,7 +38,7 @@ for update in updates:
                     if page_index > update.index(rule[1]):
                         incorrect_updates.append(update)
 
-
+# VERIFIER
 # corriger l'update : trouver le second membre, le retirer puis le réinsérer juste après le premier. Puis relancer le test sur la série/update
 for update in incorrect_updates:
     for page_index, page in enumerate(update):
