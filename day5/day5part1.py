@@ -1,6 +1,6 @@
 
 # new pages must be printed in a specific order
-# X|Y means if X and Y must be produced in an update, X must be printed at ome point before Y
+# X|Y means if X and Y must be produced in an update, X must be printed at one point before Y
 # there are 2 inputs : the page ordering rules in form of X|Y pairs and the page to produce in each update
 # we dont know if the updates respect the ordering rules
 # identify which updates respect the ordering rules
