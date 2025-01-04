@@ -19,23 +19,9 @@ with open('./day6/input.txt', 'r', encoding="utf-8") as input_file:
         carte.append(line.strip(' \n'))
 
 # initialisation :
-guard_position: list = get_guard_initial_position(carte)
-guard_direction: str = 'North'
-guard: Guard = Guard(guard_position, guard_direction, carte)
-
-# parcours :
-while guard.position != []:
-    if guard.direction == 'North':
-        guard.to_North()
-        continue
-    if guard.direction == 'East':
-        guard.to_East()
-        continue
-    if guard.direction == 'South':
-        guard.to_South()
-        continue
-    if guard.direction == 'West':
-        guard.to_West()
-        continue
+guard_initial_position: list = get_guard_initial_position(carte)
+guard_initial_direction: str = 'North'
+guard: Guard = Guard(guard_initial_position, guard_initial_direction, carte)
+guard.travel()
 
 print(len(guard.positions_traveled), "cases différentes parcourues") # 4647 OK

@@ -1,23 +1,24 @@
 ## Lore of the challenge
 
-We are helping a group of Senior Historians to find the Cheif historian.
+We are helping a group of Senior Historians to find the Chief Historian (CH).
 
 ## Rules
 - mission : get 50 stars
 - CH must be in one of the locations
 - for each location check (each puzzle solved) => 1 star granted
-- each day : 1 puzzle  + 1 bonus puzzle when the first is completed
+- each day : 1 puzzle + 1 bonus puzzle when the first is completed
 
 ## Progress
 
 Challenges completed :
-- day1part1 ✅ & day1part2 ✅
-- day2part1 ✅ & day2part2 ✅
-- day3part1 ✅ & day3part2 ✅
-- day4part1 ✅ & day4part2 ✅
-- day5part1 ✅
-- day6part1 ✅
-- day7part1 ✅ & day7part2 ✅
+- day1_part1 ✅ & day1_part2 ✅
+- day2_part1 ✅ & day2_part2 ✅
+- day3_part1 ✅ & day3_part2 ✅
+- day4_part1 ✅ & day4_part2 ✅
+- day5_part1 ✅
+- day6_part1 ✅ & day6_part1 ?
+- day7_part1 ✅ & day7_part2 ✅
+- day11_part1 ?
 
 ## Tests
 
