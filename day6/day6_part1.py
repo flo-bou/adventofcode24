@@ -22,6 +22,6 @@ with open('./day6/input.txt', 'r', encoding="utf-8") as input_file:
 guard_initial_position: list = get_guard_initial_position(carte)
 guard_initial_direction: str = 'North'
 guard: Guard = Guard(guard_initial_position, guard_initial_direction, carte)
-guard.travel()
+guard.patrolling()
 
 print(len(guard.positions_traveled), "cases différentes parcourues") # 4647 OK

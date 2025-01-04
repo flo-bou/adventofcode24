@@ -1,3 +1,4 @@
+from copy import deepcopy
 
 class Guard:
     
@@ -6,7 +7,7 @@ class Guard:
         self.direction: str = direction
         self.positions_traveled: set[tuple] = set()
         self.positions_traveled.add((position[0], position[1])) # initial position
-        self.stuck_positions: list[tuple] = list()
+        self.stuck_positions: list[tuple] = list() # liste des positions sur lesquelles le garde est bloqué et tourne
         self.is_looping: bool = False
         self.map: list[str] = carte
 
@@ -20,10 +21,11 @@ class Guard:
             if after_guard:
                 if char == "#":
                     self.position = (self.position[0], char_index-1)
-                    self.direction = "South"
-                    self.stuck_positions.append(self.position)
-                    if self.stuck_positions.count(self.position) > 1:
+                    stuck_position: tuple = (*self.position, self.direction)
+                    self.stuck_positions.append(stuck_position)
+                    if self.stuck_positions.count(stuck_position) > 1:
                         self.is_looping = True
+                    self.direction = "South"
                     break
                 else: # le garde avance
                     self.positions_traveled.add((self.position[0], char_index))
@@ -41,16 +43,17 @@ class Guard:
             if after_guard:
                 if char == "#":
                     self.position = (self.position[0], char_index+1)
-                    self.direction = "North"
-                    self.stuck_positions.append(self.position)
-                    if self.stuck_positions.count(self.position) > 1:
+                    stuck_position: tuple = (*self.position, self.direction)
+                    self.stuck_positions.append(stuck_position)
+                    if self.stuck_positions.count(stuck_position) > 1:
                         self.is_looping = True
+                    self.direction = "North"
                     break
                 else:
                     self.positions_traveled.add((self.position[0], char_index))
         if self.direction != "North": 
             # si aucun '#' n'a été atteint, alors le garde est sorti de la carte
-            self.position = ()
+            self.position = tuple()
 
     def to_South(self) -> None:
         after_guard: bool = False
@@ -61,16 +64,17 @@ class Guard:
             if after_guard:
                 if line[self.position[1]] == '#':
                     self.position = (line_index-1, self.position[1])
-                    self.direction = "West"
-                    self.stuck_positions.append(self.position)
-                    if self.stuck_positions.count(self.position) > 1:
+                    stuck_position: tuple = (*self.position, self.direction)
+                    self.stuck_positions.append(stuck_position)
+                    if self.stuck_positions.count(stuck_position) > 1:
                         self.is_looping = True
+                    self.direction = "West"
                     break
                 else:
                     self.positions_traveled.add((line_index, self.position[1]))
         if self.direction != "West": 
             # si aucun '#' n'a été atteint, alors le garde est sorti de la carte
-            self.position = ()
+            self.position = tuple()
 
     def to_North(self) -> None:
         after_guard: bool = False
@@ -81,19 +85,20 @@ class Guard:
             if after_guard:
                 if line[self.position[1]] == '#':
                     self.position = (line_index+1, self.position[1])
-                    self.direction = "East"
-                    self.stuck_positions.append(self.position)
-                    if self.stuck_positions.count(self.position) > 1:
+                    stuck_position: tuple = (*self.position, self.direction)
+                    self.stuck_positions.append(stuck_position)
+                    if self.stuck_positions.count(stuck_position) > 1:
                         self.is_looping = True
+                    self.direction = "East"
                     break
                 else:
                     self.positions_traveled.add((line_index, self.position[1]))
         if self.direction != "East": 
             # si aucun '#' n'a été atteint, alors le garde est sorti de la carte
-            self.position = ()
+            self.position = tuple()
     
-    def travel(self):
-        while self.position != () and not self.is_looping:
+    def patrolling(self):
+        while self.position != tuple() and (not self.is_looping):
             if self.direction == 'North':
                 self.to_North()
                 continue
@@ -105,7 +110,6 @@ class Guard:
                 continue
             if self.direction == 'West':
                 self.to_West()
-                continue
 
 
 def get_guard_initial_position(carte: list[str]) -> tuple[int, int]:
@@ -119,11 +123,11 @@ def get_guard_initial_position(carte: list[str]) -> tuple[int, int]:
 
 
 def generate_new_map(initial_map: list[str], obstruction_position: tuple[int, int]) -> list[str]:
-    
-    line = initial_map[obstruction_position[0]]
+    new_map: list[str] = deepcopy(initial_map)
+    line: str = new_map[obstruction_position[0]]
     if obstruction_position[1] == len(line)-1: # s'il s'agit du dernier caractère de la ligne
         new_line = line[:obstruction_position[1]] + "#"
     else:
         new_line = line[:obstruction_position[1]] + "#" + line[obstruction_position[1]+1:]
-    initial_map[obstruction_position[0]] = new_line
-    return initial_map
+    new_map[obstruction_position[0]] = new_line
+    return new_map
