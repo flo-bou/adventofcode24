@@ -27,7 +27,7 @@ stone_nb_acc: int = 0
 
 for blink_remaining in range(90, 0, -1):
     next_stones, stone_nb_acc = blink_opti(next_stones, stone_nb_acc, blink_remaining)
-    print("Il reste", blink_remaining-1, " blinks. Nombre de pierres précalculées :", stone_nb_acc) # 25 -> 198089 OK ; 30 -> 1.604.873 OK ; 35 -> 12.961.338 ; 45 -> 846.491.367 ; 55 -> 55.304.122.209 ; 65 -> 3.614.798.031.580 ; 75 -> 236.302.670.835.517 ; 90 -> 124.893.218.895.907.126
+    print("Il reste", blink_remaining-1, " blinks. Nombre de pierres précalculées :", stone_nb_acc) # 25 -> 198089 OK ; 30 -> 1.604.873 OK ; 35 -> 12.961.338 ; 45 -> 846.491.367 ; 55 -> 55.304.122.209 ; 65 -> 3.614.798.031.580 ; 75 -> 236.302.670.835.517 OK ! ; 90 -> 124.893.218.895.907.126
 
 print("La longueur des next_stones est de", len(next_stones))
 print("Le nombre finale de pierres est de", stone_nb_acc+len(next_stones))

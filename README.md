@@ -18,7 +18,7 @@ Challenges completed :
 - day5_part1 ✅
 - day6_part1 ✅ & day6_part2 ✅
 - day7_part1 ✅ & day7_part2 ✅
-- day11_part1 ✅
+- day11_part1 ✅ & day11_part2 ✅
 
 ## Tests
 

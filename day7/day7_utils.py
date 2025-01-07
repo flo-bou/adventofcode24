@@ -45,7 +45,7 @@ def calculate_operation(nb1: int, nb2: int, operation: str) -> int:
     Args:
         nb1 (int): 1ere opérande
         nb2 (int): 2e opérande
-        operation (str): Descripteur de l'opération à effectuer. Les 2 valeurs possibles sont "add" pour la somme et "mul" pour la multiplication
+        operation (str): Descripteur de l'opération à effectuer. Les 3 valeurs possibles sont "add" pour la somme, "mul" pour la multiplication et "cat" pour la concaténation
 
     Raises:
         Exception: Levée quand operation n'a pas une valeur autorisée
@@ -79,10 +79,11 @@ def try_combinations(target: int, operands: list[int], operator_combinations: li
     """
     result: int = -1
     init: int = operands.pop(0)
+    acc: int
     
     for operator_combi in operator_combinations:
         pairs: list = list(zip(operator_combi, operands))
-        acc: int = init
+        acc = init
         for pair in pairs:
             acc = calculate_operation(acc, pair[1], pair[0])
         if acc == target:
