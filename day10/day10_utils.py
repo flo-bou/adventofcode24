@@ -1,9 +1,9 @@
 
-def get_adjacent_positions(position: tuple[int]) -> list[tuple]:
+def get_adjacent_positions(position: tuple[int, int]) -> list[tuple]:
     """Obtenir les positions ajacentes à la position en entrée
 
     Args:
-        position (tuple[int]): Position de la forme (ligne, col)
+        position (tuple[int, int]): Position de la forme (ligne, col)
 
     Returns:
         list[tuple]: Une liste des (2 à 4) positions (sous forme de tuple (x, y)) adjacentes dans l'ordre Nord, Est, Sud, Ouest. Si la position adjacente est hors de la map, elle n'est pas renvoyée
@@ -24,11 +24,11 @@ def get_adjacent_positions(position: tuple[int]) -> list[tuple]:
     return results
 
 
-def get_position_value(position: tuple[int], topo_map: list[list]) -> int:
+def get_position_value(position: tuple[int, int], topo_map: list[list]) -> int:
     """Lit la valeur de la carte topographique en entrée à la position donnée
 
     Args:
-        position (tuple[int]): Position à lire
+        position (tuple[int, int]): Position à lire
         topo_map (list[list]): La carte topographique à utiliser
 
     Returns:
@@ -59,7 +59,7 @@ def get_incremental_paths(path: list[tuple], topo_map: list[list]) -> list[list]
     return results
 
 
-def get_hiking_trails(initial_position: tuple[int], topo_map: list[list]) -> list[list]:
+def get_hiking_trails(initial_position: tuple[int, int], topo_map: list[list]) -> list[list]:
     """Récupère une position de départ et renvoie tous les hiking trails complets
 
     Args:

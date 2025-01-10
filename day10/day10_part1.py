@@ -35,4 +35,4 @@ for line_index, line in enumerate(topo_map):
 # quand les 9 sont atteints, stocker les positions dans un set
 # la longueur du set est le score de ce trailhead
 
-print("Somme des trailhead score :", total_trailhead_score) # 509
+print("Somme des trailhead score :", total_trailhead_score) # 509 NOPE too low

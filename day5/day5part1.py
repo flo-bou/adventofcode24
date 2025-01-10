@@ -21,7 +21,7 @@ with open('./day5/input.txt', 'r', encoding="utf-8") as input_file:
         rules.append(list(map(lambda x: int(x), line.strip(' \n').split("|"))))
     # récuperer toutes les updates :
     while True:
-        line: str = input_file.readline()
+        line = input_file.readline()
         if len(line) == 0:
             break
         updates.append(list(map(lambda x: int(x), line.strip(' \n').split(","))))
