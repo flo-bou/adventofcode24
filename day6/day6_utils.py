@@ -31,7 +31,7 @@ class Guard:
                     self.positions_traveled.add((self.position[0], char_index))
         if self.direction != "South": 
             # si aucun '#' n'a été atteint, alors le garde est sorti de la carte
-            self.position = tuple()
+            self.position = (-1, -1)
 
     def to_West(self) -> None:
         after_guard: bool = False
@@ -53,7 +53,7 @@ class Guard:
                     self.positions_traveled.add((self.position[0], char_index))
         if self.direction != "North": 
             # si aucun '#' n'a été atteint, alors le garde est sorti de la carte
-            self.position = tuple()
+            self.position = (-1, -1)
 
     def to_South(self) -> None:
         after_guard: bool = False
@@ -74,7 +74,7 @@ class Guard:
                     self.positions_traveled.add((line_index, self.position[1]))
         if self.direction != "West": 
             # si aucun '#' n'a été atteint, alors le garde est sorti de la carte
-            self.position = tuple()
+            self.position = (-1, -1)
 
     def to_North(self) -> None:
         after_guard: bool = False
@@ -95,9 +95,13 @@ class Guard:
                     self.positions_traveled.add((line_index, self.position[1]))
         if self.direction != "East": 
             # si aucun '#' n'a été atteint, alors le garde est sorti de la carte
-            self.position = tuple()
+            self.position = (-1, -1)
     
     def patrolling(self):
+        """Executes the patrol routine for the guard. The guard continues moving in its current direction until it hits an obstruction ('#'), at which point it changes direction.
+        The patrol stops if the guard exits the map or if a looping path is detected.
+        The guard's position and looping status are updated during the patrol.
+        """
         while self.position != tuple() and (not self.is_looping):
             if self.direction == 'North':
                 self.to_North()
@@ -123,6 +127,15 @@ def get_guard_initial_position(carte: list[str]) -> tuple[int, int]:
 
 
 def generate_new_map(initial_map: list[str], obstruction_position: tuple[int, int]) -> list[str]:
+    """Returns a new map with an obstruction added at the given position.
+
+    Args:
+        initial_map (list[str]): The initial/model map.
+        obstruction_position (tuple[int, int]): The position to add the obstruction to.
+
+    Returns:
+        list[str]: A new map with the obstruction added.
+    """
     new_map: list[str] = deepcopy(initial_map)
     line: str = new_map[obstruction_position[0]]
     if obstruction_position[1] == len(line)-1: # s'il s'agit du dernier caractère de la ligne

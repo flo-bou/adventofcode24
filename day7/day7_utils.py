@@ -53,7 +53,7 @@ def calculate_operation(nb1: int, nb2: int, operation: str) -> int:
     Returns:
         int: Le résultat de l'opération
     """
-    result: int = None
+    result: int
     if operation == "add":
         result = nb1 + nb2
     elif operation == "mul":

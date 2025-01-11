@@ -9,6 +9,14 @@
 
 
 def get_pairs_combinations(values: list[tuple]) -> list[list]:
+    """Generate all possible pairs of values from a list of values.
+
+    Args:
+        values (list[tuple]): A list of values.
+
+    Returns:
+        list[list]: A list of pairs of values.
+    """
     pairs_combinations: list[list] = list()
     for value_i in range(0, len(values)):
         if value_i+1 == len(values): # si dernier elem
@@ -26,10 +34,28 @@ def get_vector(pos1: tuple[int, int], pos2: tuple[int, int]) -> tuple[int, int]:
 
 
 def apply_vector_2time(position: tuple[int, int], vector: tuple[int, int]) -> tuple[int, int]:
+    """Applies a vector two times to a given position.
+
+    Args:
+        position (tuple[int, int]): A tuple of two integers representing the position to apply the vector to.
+        vector (tuple[int, int]): A tuple of two integers representing the vector to apply.
+
+    Returns:
+        tuple[int, int]: A tuple of two integers representing the new position after applying the vector two times.
+    """
     return (position[0]+vector[0]*2, position[1]+vector[1]*2)
 
 
-def get_possible_antinodes(combination: list[tuple], vector: tuple[int, int]):
+def get_possible_antinodes(combination: list[tuple], vector: tuple[int, int]) -> tuple[tuple[int, int], tuple[int, int]]:
+    """From a combination of two antennas and a vector between them, it returns the two possible antinodes, by applying the vector two times in both direction.
+
+    Args:
+        combination (list[tuple]): A list of two tuples of integers representing the positions of the two antennas.
+        vector (tuple[int, int]): A tuple of two integers representing the vector between the two antennas.
+
+    Returns:
+        tuple[tuple[int, int], tuple[int, int]]: A tuple of two tuples of integers representing the two possible antinodes.
+    """
     antinode1: tuple[int, int] = apply_vector_2time(combination[0], vector)
     vector_neg: tuple[int, int] = (0-vector[0], 0-vector[1])
     # print("Pour la combinaison", combination, "les vecteurs sont :", vector, vector_neg)
@@ -38,13 +64,28 @@ def get_possible_antinodes(combination: list[tuple], vector: tuple[int, int]):
 
 
 class AntennasMap(object):
-    """docstring for ClassName."""
+    """
+    Represents a map of antennas.
+
+    Attributes:
+        antennas_map (list[str]): A list of strings representing the map of antennas.
+        antennas (dict): A dictionary that maps each antenna type (a-zA-Z0-9) to a list of tuples representing the positions of the antennas of that type.
+
+    Methods:
+        detect_antennas(): Detects the antennas on the map and populates the `antennas` attribute
+        is_on_map(pos: tuple[int, int]): Checks if a given position is on the map.
+    """
     def __init__(self, antennas_map: list[str]):
         # super(ClassName, self).__init__()
         self.antennas_map: list[str] = antennas_map
     
     def detect_antennas(self) -> dict:
-        # lire tous les char et pour chacun mettre dans un dict qui contient des listes
+        """Detects the antennas on the map and populates the `antennas` attribute.
+        The `antennas` attribute is a dictionary that maps each antenna type (1 char long amongst a-zA-Z0-9) to a list of tuples representing the positions of the antennas of that type.
+
+        Returns:
+            dict: The `antennas` attribute.
+        """
         self.antennas: dict = dict()
         for line_i, line in enumerate(self.antennas_map):
             for char_i, char in enumerate(line):
@@ -56,6 +97,14 @@ class AntennasMap(object):
         return self.antennas
         
     def is_on_map(self, pos: tuple[int, int]) -> bool:
+        """Checks if a given position is on the map.
+        
+        Args:
+            pos (tuple[int, int]): The position to check.
+        
+        Returns:
+            bool: True if the position is on the map, False otherwise.
+        """
         result: bool = True
         if pos[0] < 0 or pos[0] >= len(self.antennas_map):
             result = False

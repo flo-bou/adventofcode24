@@ -25,6 +25,12 @@ def read_result_file(stone: int) -> dict:
 
 
 def write_result_file(stone: int, results: dict) -> None:
+    """Write results in a JSON file for stone N.
+
+    Args:
+        stone (int): Number on the stone
+        results (dict): Results to write in the file
+    """
     stone: str = str(stone)
     with open('./day11/results/stone'+stone+'.json', 'w', encoding="utf-8") as json_file:
         dump(results, json_file, indent=2, sort_keys=True)

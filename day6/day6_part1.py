@@ -19,7 +19,7 @@ with open('./day6/input.txt', 'r', encoding="utf-8") as input_file:
         carte.append(line.strip(' \n'))
 
 # initialisation :
-guard_initial_position: list = get_guard_initial_position(carte)
+guard_initial_position: tuple[int, int] = get_guard_initial_position(carte)
 guard_initial_direction: str = 'North'
 guard: Guard = Guard(guard_initial_position, guard_initial_direction, carte)
 guard.patrolling()
