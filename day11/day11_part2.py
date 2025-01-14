@@ -12,26 +12,31 @@ from day11_utils import *
 # Stocker les résultats dans un fichier ? En faire 10 de suite 50->40
 # voir get_stone0 pour un test de simplification
 
-stones: list[int] = list()
 
-with open('./day11/input.txt', 'r+', encoding="utf-8") as input_file:
-    while input_file:
-        line: str = input_file.readline()
-        if line == "":
-            break
-        stones.extend(list(map(lambda x: int(x), line.strip(' \n').split(" "))))
-        print(stones)
+def main():
+    stones: list[int] = list()
 
-next_stones: list[int] = stones
-stone_nb_acc: int = 0
+    with open('./day11/input.txt', 'r+', encoding="utf-8") as input_file:
+        while input_file:
+            line: str = input_file.readline()
+            if line == "":
+                break
+            stones.extend(list(map(lambda x: int(x), line.strip(' \n').split(" "))))
+            print(stones)
 
-for blink_remaining in range(90, 0, -1):
-    next_stones, stone_nb_acc = blink_opti(next_stones, stone_nb_acc, blink_remaining)
-    print("Il reste", blink_remaining-1, " blinks. Nombre de pierres précalculées :", stone_nb_acc) # 25 -> 198089 OK ; 30 -> 1.604.873 OK ; 35 -> 12.961.338 ; 45 -> 846.491.367 ; 55 -> 55.304.122.209 ; 65 -> 3.614.798.031.580 ; 75 -> 236.302.670.835.517 OK ! ; 90 -> 124.893.218.895.907.126
+    next_stones: list[int] = stones
+    stone_nb_acc: int = 0
 
-print("La longueur des next_stones est de", len(next_stones))
-print("Le nombre finale de pierres est de", stone_nb_acc+len(next_stones))
+    for blink_remaining in range(90, 0, -1):
+        next_stones, stone_nb_acc = blink_opti(next_stones, stone_nb_acc, blink_remaining)
+        print("Il reste", blink_remaining-1, " blinks. Nombre de pierres précalculées :", stone_nb_acc) # 25 -> 198089 OK ; 30 -> 1.604.873 OK ; 35 -> 12.961.338 ; 45 -> 846.491.367 ; 55 -> 55.304.122.209 ; 65 -> 3.614.798.031.580 ; 75 -> 236.302.670.835.517 OK ! ; 90 -> 124.893.218.895.907.126
 
-# stone1: int = get_stone1_child_nb(25)
-# print(stone1)
+    print("La longueur des next_stones est de", len(next_stones))
+    print("Le nombre finale de pierres est de", stone_nb_acc+len(next_stones))
 
+    # stone1: int = get_stone1_child_nb(25)
+    # print(stone1)
+
+
+if __name__ == "__main__":
+    main()

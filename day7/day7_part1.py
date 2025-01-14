@@ -13,24 +13,29 @@ from day7_utils import *
 # for each line, process the calculation
 # test all the possibilities of operators agains the result
 
-target: int
-operands: list
-mul: str = "add"
-add: str = "mul"
-combinations_of_every_length: list[list] = get_every_combinations([mul, add], 12)
-sum_of_correct_equations: int = 0
+def main():
+    target: int
+    operands: list
+    mul: str = "add"
+    add: str = "mul"
+    combinations_of_every_length: list[list] = get_every_combinations([mul, add], 12)
+    sum_of_correct_equations: int = 0
 
-with open('./day7/input.txt', 'r', encoding="utf-8") as input_file:
-    while input_file:
-        line: str = input_file.readline()
-        if line == "":
-            break
-        target_str, operands_str = line.split(":")
-        target = int(target_str)
-        operands = list(map(lambda nb: int(nb), operands_str.strip(' \n').split(" ")))
-        operator_combinations: list[tuple] = combinations_of_every_length[len(operands)-1]
-        result: int = try_combinations(target, operands, operator_combinations)
-        if result > -1:
-            sum_of_correct_equations += result
+    with open('./day7/input.txt', 'r', encoding="utf-8") as input_file:
+        while input_file:
+            line: str = input_file.readline()
+            if line == "":
+                break
+            target_str, operands_str = line.split(":")
+            target = int(target_str)
+            operands = list(map(lambda nb: int(nb), operands_str.strip(' \n').split(" ")))
+            operator_combinations: list[tuple] = combinations_of_every_length[len(operands)-1]
+            result: int = try_combinations(target, operands, operator_combinations)
+            if result > -1:
+                sum_of_correct_equations += result
 
-print("sum_of_correct_equations :", sum_of_correct_equations) # 1260333054159 OK
+    print("sum_of_correct_equations :", sum_of_correct_equations) # 1260333054159 OK
+
+
+if __name__ == "__main__":
+    main()

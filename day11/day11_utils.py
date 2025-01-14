@@ -9,18 +9,18 @@ from json import load, dump
 
 def read_result_file(stone: int) -> dict:
     data = dict()
-    stone: str = str(stone)
+    stone_str: str = str(stone)
     try:
-        with open('./day11/results/stone'+stone+'.json', 'r', encoding="utf-8") as json_file:
+        with open('./day11/results/stone'+stone_str+'.json', 'r', encoding="utf-8") as json_file:
             data = load(json_file)
         # print("data read from", 'stone'+stone+'.json', data)
     except FileNotFoundError as e:
         # raise e
         # data = dict()
-        print('stone'+stone+'.json', "n'existe pas.")
-        with open('./day11/results/stone'+stone+'.json', 'w', encoding="utf-8") as json_file:
+        print('stone'+stone_str+'.json', "n'existe pas.")
+        with open('./day11/results/stone'+stone_str+'.json', 'w', encoding="utf-8") as json_file:
             pass
-        print('stone'+stone+'.json', "créée.")
+        print('stone'+stone_str+'.json', "créée.")
     return data
 
 
@@ -31,10 +31,10 @@ def write_result_file(stone: int, results: dict) -> None:
         stone (int): Number on the stone
         results (dict): Results to write in the file
     """
-    stone: str = str(stone)
-    with open('./day11/results/stone'+stone+'.json', 'w', encoding="utf-8") as json_file:
+    stone_str: str = str(stone)
+    with open('./day11/results/stone'+stone_str+'.json', 'w', encoding="utf-8") as json_file:
         dump(results, json_file, indent=2, sort_keys=True)
-    print('./day11/results/stone'+stone+'.json', "written")
+    print('./day11/results/stone'+stone_str+'.json', "written")
 
 
 def get_results() -> dict:
@@ -57,7 +57,7 @@ def store_results(stone: int, until_blink_nb: int) -> None:
     all_known_results: dict = get_results() # pour une stone, on va avoir besoin de tous les résultats
     # lancer le calcul
     for blink_no in range(20, until_blink_nb+1):
-        stone_child_nb: int = get_1digit_stone_child_nb(stone, blink_no, all_known_results)
+        stone_child_nb = get_1digit_stone_child_nb(stone, blink_no, all_known_results)
         data[str(blink_no)] = stone_child_nb
         print("Pour le blink", blink_no, "la pierre", str(stone), "génère", str(stone_child_nb), "pierres.")
     # fusionner les 2 :
@@ -354,9 +354,6 @@ def get_stone16192_child_nb(iter_nb: int, all_known_results: dict = dict()) -> i
     if iter_nb > 4:
         result = get_stone3_child_nb(iter_nb-4, all_known_results) + get_stone2_child_nb(iter_nb-4, all_known_results)*2 + get_stone7_child_nb(iter_nb-4, all_known_results)*2 + get_stone6_child_nb(iter_nb-4, all_known_results) + get_stone16192_child_nb(iter_nb-4, all_known_results)
     return result
-
-
-# ----------------------------------- Truc ----------------------------------- #
 
 
 def blink(stones: list[int]) -> list[int]:

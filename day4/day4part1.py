@@ -5,11 +5,6 @@
 # The same letter can be used with differents findings
 
 
-
-data: list = list()
-detection: int = 0
-# line_index: int = 0
-
 def detect_XMAS(data: list, line_nb: int, char_index: int):
     result = 0
     # faire les détections dans les 8 directions
@@ -99,19 +94,27 @@ def detect_XMAS(data: list, line_nb: int, char_index: int):
         result += 1
     return result
 
+def main():
+    data: list = list()
+    detection: int = 0
+    # line_index: int = 0
+    
+    # put the data in a variable :
+    with open('./day4/input.txt', 'r', encoding="utf-8") as input_file:
+        while True:
+            line: str = input_file.readline()
+            if len(line) == 0:
+                break
+            data.append(line.strip('\n'))
 
-# put the data in a variable :
-with open('./day4/input.txt', 'r', encoding="utf-8") as input_file:
-    while True:
-        line: str = input_file.readline()
-        if len(line) == 0:
-            break
-        data.append(line.strip('\n'))
+    # lire dans l'ordre tout le contenu et à chaque lettre 'X', lancer une fonction de détection dans chaque sens (faire tous les sens même si 1 sens a déjà donné une détection fructueuse)
+    for line_nb, line in enumerate(data):
+        for char_index, char in enumerate(line):
+            if char == 'X':
+                detection += detect_XMAS(data, line_nb, char_index)
 
-# lire dans l'ordre tout le contenu et à chaque lettre 'X', lancer une fonction de détection dans chaque sens (faire tous les sens même si 1 sens a déjà donné une détection fructueuse)
-for line_nb, line in enumerate(data):
-    for char_index, char in enumerate(line):
-        if char == 'X':
-            detection += detect_XMAS(data, line_nb, char_index)
+    print(detection, "détections") # 2524 OK
 
-print(detection, "détections") # 2524 OK
+
+if __name__ == "__main__":
+    main()

@@ -5,7 +5,6 @@
 # reuse the code from part one and add :
 # if the report is unsafe test it again if you remove the 1st level, if not, try to remove the 2nd level, and so on...
 
-safe_reports_nb: int = 0
 
 def is_safe(levels: list):
     result: bool = False
@@ -41,23 +40,30 @@ def is_almost_safe(levels: list):
     return result
 
 
-# access the local file input.txt
-with open('./day2/input.txt', 'r', encoding="utf-8") as input_file:
-    while True:
-        line = input_file.readline()
-        if len(line) == 0:
-            break
-        levels = line.strip(' \n').split(' ')
-        levels = list(map(lambda nb: int(nb), levels))
-        # print(levels)
-        if is_safe(levels):
-            print("Report is safe :", levels)
-            safe_reports_nb += 1
-        else:
-            if is_almost_safe(levels):
+def main():
+    safe_reports_nb: int = 0
+
+    # access the local file input.txt
+    with open('./day2/input.txt', 'r', encoding="utf-8") as input_file:
+        while True:
+            line = input_file.readline()
+            if len(line) == 0:
+                break
+            levels = line.strip(' \n').split(' ')
+            levels = list(map(lambda nb: int(nb), levels))
+            # print(levels)
+            if is_safe(levels):
+                print("Report is safe :", levels)
                 safe_reports_nb += 1
             else:
-                print("Report is not safe :", levels)
+                if is_almost_safe(levels):
+                    safe_reports_nb += 1
+                else:
+                    print("Report is not safe :", levels)
 
 
-print("Nombre de reports safes : ", str(safe_reports_nb)) # 514 OK
+    print("Nombre de reports safes : ", str(safe_reports_nb)) # 514 OK
+
+
+if __name__ == "__main__":
+    main()
